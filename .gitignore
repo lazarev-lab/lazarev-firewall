@@ -1,0 +1,34 @@
+# .NET build and publish output
+**/[Bb]in/
+**/[Oo]bj/
+**/[Pp]ublish/
+**/[Aa]rtifacts/
+**/TestResults/
+BenchmarkDotNet.Artifacts/
+
+# IDE and user-specific files
+.vs/
+.idea/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.DotSettings.user
+
+# Test and coverage output
+coverage/
+coverage.*
+*.coverage
+*.coveragexml
+
+# Temporary and diagnostic files
+*.log
+*.tmp
+*.cache
+*.dmp
+*.stackdump
+
+# OS-generated files
+Thumbs.db
+ehthumbs.db
+.DS_Store

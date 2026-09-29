@@ -1,0 +1,18 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <SolidColorBrush x:Key="WindowBrush" Color="#FF202020"/>
+  <SolidColorBrush x:Key="ShellBrush" Color="#FFFAF9F8"/>
+  <SolidColorBrush x:Key="SurfaceBrush" Color="#FFFFFFFF"/>
+  <SolidColorBrush x:Key="TitleBarBrush" Color="#FFF3F3F3"/>
+  <SolidColorBrush x:Key="HeaderBrush" Color="#FFF8F8F8"/>
+  <SolidColorBrush x:Key="TextBrush" Color="#FF1C1C1C"/>
+  <SolidColorBrush x:Key="MutedBrush" Color="#FF605E5C"/>
+  <SolidColorBrush x:Key="BorderBrush" Color="#FFE5E5E5"/>
+  <SolidColorBrush x:Key="ShellBorderBrush" Color="#66797775"/>
+  <SolidColorBrush x:Key="TableBrush" Color="#FFFFFFFF"/>
+  <SolidColorBrush x:Key="SelectionBrush" Color="#FFE8F2FD"/>
+  <SolidColorBrush x:Key="BlueBrush" Color="#FF0067C0"/>
+  <SolidColorBrush x:Key="GreenBrush" Color="#FF15803D"/>
+  <SolidColorBrush x:Key="RedBrush" Color="#FFB91C1C"/>
+  <SolidColorBrush x:Key="AmberBrush" Color="#FF92400E"/>
+  <SolidColorBrush x:Key="BannerBrush" Color="#FFFFF7E6"/>
+</ResourceDictionary>
