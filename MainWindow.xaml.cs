@@ -1,6 +1,7 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using System;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 
@@ -13,6 +14,7 @@ public partial class MainWindow : Window
     public MainWindow()
     {
         InitializeComponent();
+        AddMenuPopup.CustomPopupPlacementCallback = AddMenuPopup_CustomPlacement;
         DataContext = this;
         var workArea = SystemParameters.WorkArea;
         var windowWidth = Math.Min(workArea.Width * 0.80, workArea.Height * 0.80 * 16.0 / 9.0);
@@ -20,16 +22,15 @@ public partial class MainWindow : Window
         Height = windowWidth * 9.0 / 16.0;
         Left = workArea.Left + (workArea.Width - Width) / 2.0;
         Top = workArea.Top + (workArea.Height - Height) / 2.0;
-        var dark = Application.Current.Resources.MergedDictionaries[0].Source.OriginalString.Contains("Dark");
         var green = Brush("GreenBrush");
         var red = Brush("RedBrush");
         var amber = Brush("AmberBrush");
-        var greenFill = Fill(dark ? 0x40166634 : 0xFFDCFCE7);
-        var redFill = Fill(dark ? 0x40991B1B : 0xFFFEE2E2);
-        var amberFill = Fill(dark ? 0x40B45309 : 0xFFFEF3C7);
-        var greenBorder = Fill(dark ? 0x6622C55E : 0xFF86EFAC);
-        var redBorder = Fill(dark ? 0x66EF4444 : 0xFFFDA4AF);
-        var amberBorder = Fill(dark ? 0x66D97706 : 0xFFFCD34D);
+        var greenFill = Fill(0xFFDCFCE7);
+        var redFill = Fill(0xFFFEE2E2);
+        var amberFill = Fill(0xFFFEF3C7);
+        var greenBorder = Fill(0xFF86EFAC);
+        var redBorder = Fill(0xFFFDA4AF);
+        var amberBorder = Fill(0xFFFCD34D);
         var entries = new[]
         {
             new DemoApp("\u25A4", "UnknownApp.exe", "Blocked by default", "2026-09-23 10:44:52", "2026-09-23 10:40:12", @"C:\Users\Public\Downloads\UnknownApp.exe", amber, amberFill, amberBorder, true),
@@ -54,6 +55,14 @@ public partial class MainWindow : Window
     private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
     private void Maximize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
     private void Close_Click(object sender, RoutedEventArgs e) => Close();
+    private void AddButton_Click(object sender, RoutedEventArgs e)
+    {
+        AddMenuPopup.PlacementTarget = AddButton;
+        AddMenuPopup.IsOpen = !AddMenuPopup.IsOpen;
+    }
+    private CustomPopupPlacement[] AddMenuPopup_CustomPlacement(Size popupSize, Size targetSize, Point offset) =>
+        new[] { new CustomPopupPlacement(new Point(0, targetSize.Height + 2), PopupPrimaryAxis.None) };
+    private void AddMenuItem_Click(object sender, RoutedEventArgs e) => AddMenuPopup.IsOpen = false;
 }
 
 public sealed class DemoApp
